@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<object th:include="fragments/fragment :: header" th:remove="tag"></object>
+	</head>
+	
+	<body>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
+		<div class="container-fluid">
+			<h4 style="margin-top:20px">Tambah Jabatan</h4>
+			<form th:action="@{/jabatan/tambah}" id="jabatanForm" th:object="${jabatan}" method="POST">
+				<table class="table">
+					<tr>
+						<td>Nama</td>
+						<td><input type="text" required="required" name="nama"/></td>
+					</tr>
+					<tr>
+						<td>Deskripsi</td>
+						<td><input type="text" required="required" name="deskripsi"/></td>
+					</tr>
+					<tr>
+						<td>Gaji Pokok</td>
+						<td><input type="number" required="required" name="gajiPokok"/></td>
+					</tr>
+				</table>
+				<button class="btn btn-primary" style="margin-top:20px"type="submit">Simpan</button>		
+			</form>
+		</div>
+		<footer th:replace="fragments/fragment :: footer"></footer>
+	</body>
+</html>
