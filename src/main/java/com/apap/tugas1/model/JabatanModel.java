@@ -1,6 +1,9 @@
 package com.apap.tugas1.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,6 +35,10 @@ public class JabatanModel implements Serializable, Comparable<JabatanModel> {
 	@Column(name = "gaji_pokok", nullable = false)
 	private Double gajiPokok;
 
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "jabatan_pegawai", joinColumns = { @JoinColumn(name = "id_jabatan") }, inverseJoinColumns = { @JoinColumn(name = "id_pegawai") })
+	private List<PegawaiModel> pegawai = new ArrayList<PegawaiModel>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -64,6 +71,16 @@ public class JabatanModel implements Serializable, Comparable<JabatanModel> {
 		this.gajiPokok = gajiPokok;
 	}
 
+
+	public List<PegawaiModel> getPegawai() {
+		return pegawai;
+	}
+
+	public void setPegawai(List<PegawaiModel> pegawai) {
+		this.pegawai = pegawai;
+	}
+
+	
 	@Override
 	public int compareTo(JabatanModel other) {
 		// TODO Auto-generated method stub

@@ -21,6 +21,10 @@
 					<td>Gaji Pokok</td>
 					<td th:text="${jabatan.gajiPokok}"></td>
 				</tr>
+				<tr>
+					<td>Jumlah Pegawai</td>
+					<td th:text=${jumlahPegawai}></td>
+				</tr>
 			</table>
 			<div class="row" style="margin-left:10px">
 				<form action="/jabatan/ubah" id="ubahJabatan" method="get">

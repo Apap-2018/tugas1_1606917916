@@ -49,6 +49,8 @@ public class JabatanController {
 	@RequestMapping(value = "/jabatan/view", method = RequestMethod.GET)
 	public String viewJabatan (@RequestParam(value = "idJabatan", required = true) Long idJabatan, Model model) {
 		JabatanModel jabatan = jabatanService.getJabatanById(idJabatan).get();
+		int jumlahPegawai = jabatan.getPegawai().size();
+		model.addAttribute("jumlahPegawai", jumlahPegawai);
 		model.addAttribute("jabatan", jabatan);
 		model.addAttribute("headerTitle", "Lihat Jabatan");
 		return "view-jabatan";
